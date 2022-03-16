@@ -1,0 +1,44 @@
+﻿För att göra denna labben behövs:
+1. Ett Azure-konto i vår testmiljö
+2. AZ CLI:et - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
+3. Terraform - https://www.terraform.io/downloads
+
+------------- Del 1 - Uppsättning
+1, Ladda ner repot från [länk här]
+2. Gå till root-foldern
+3. Öppna din favvo-terminal
+4. logga in via kommandot:
+	$ az login 
+5. Kolla igenom main.tf-filen, det är den filen som ligger till grund för allt
+6. Kolla igenom variables.tf, gissa vad den används till!? 
+7. Kör kommandot:
+	$ Terraform init
+8. Kör kommandot:
+	$ Terraform plan
+9. Gå igenom outputen, vad är det som syns? Vad innebär det här?
+10. Kör kommandot
+	$ Terraform apply
+11. Kolla i portalen om allt ser bra ut! Kom det några problem så fixa dessa!
+12. pröva att ansluta till VM:en med den publika IP:n, testa på port 3000 (notera att det kan ta någon “azure-minut”), username och password är admin, admin
+
+
+------------- Del 2 - Förändring
+13. Kolla state-filen, vad ser du där?
+14. Pröva ändra Region i terraform-koden
+15. Kör kommandot
+	$ Terraform plan  
+16. Gå igenom outputen igen, vad är det som syns? Vad innebär det här?
+17. Kör kommandot
+	$ Terraform apply
+18. Vänta någon “azure-minut”, kolla i portalen att allt ser bra ut, testa att ansluta till IP:n igen
+
+
+------------- Del 3 – Självstudier & avslut
+19. Testa att ändra VM:ens storlek! Ta bort den publika IP:n! Vart skulle dessa ändringar göras?
+20. Fundera på om någon av delarna gå att modulariseras? Vilka? Varför?
+21. När ni känner er klara är det bara att avsluta labben, kör kommandot
+	$ Terraform Destroy
+22. Dubbelkolla också att inga rester ligger kvar :) 
+
+
+
