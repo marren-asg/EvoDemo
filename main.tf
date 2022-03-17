@@ -1,13 +1,13 @@
 
 resource "azurerm_resource_group" "rg_group" {
-  name     = var.rg_name
+  name     = "${var.prefix}-${var.rg_name}"
   location = var.location
   tags     = var.tags
 }
 
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = var.vnet_name
+  name                = "${var.prefix}-${var.vnet_name}"
   location            = azurerm_resource_group.rg_group.location
   resource_group_name = azurerm_resource_group.rg_group.name
   address_space       = ["10.0.0.0/24"]
@@ -15,7 +15,7 @@ resource "azurerm_virtual_network" "vnet" {
 
 
 resource "azurerm_subnet" "vnet_subnet" {
-  name                 = var.snet_name
+  name                 = "${var.prefix}-${var.snet_name}"
   resource_group_name  = azurerm_resource_group.rg_group.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.0.0/26"]
@@ -23,18 +23,18 @@ resource "azurerm_subnet" "vnet_subnet" {
 
 
 resource "azurerm_public_ip" "testip" {
-  name                    = "${var.vm_name}-pip"
-  resource_group_name     = azurerm_resource_group.rg_group.name
+  name                    = "${var.prefix}-${var.vm_name}-pip"
   location                = azurerm_resource_group.rg_group.location
+  resource_group_name     = azurerm_resource_group.rg_group.name
   allocation_method       = "Dynamic"
   idle_timeout_in_minutes = 30
 }
 
-
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
-  resource_group_name = azurerm_resource_group.rg_group.name
   location            = azurerm_resource_group.rg_group.location
+  resource_group_name = azurerm_resource_group.rg_group.name
+  depends_on = [ azurerm_subnet.vnet_subnet ]
 
   ip_configuration {
     name                          = "internal"
@@ -46,8 +46,8 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_linux_virtual_machine" "main" {
   name                            = "${var.prefix}-vm"
-  resource_group_name             = azurerm_resource_group.rg_group.name
   location                        = azurerm_resource_group.rg_group.location
+  resource_group_name             = azurerm_resource_group.rg_group.name
   size                            = var.vm_size
   admin_username                  = var.admin_username
   admin_password                  = var.admin_password
