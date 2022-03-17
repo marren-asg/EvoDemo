@@ -7,15 +7,15 @@ variable "rg_name" {
 }
 
 variable "location" {
-  default = "north europe" //"west europe"
-}
-variable "prefix" {
-  description = "Please enter a unique three digit prefix number (between 000-999)" 
+  default = "north europe"
 }
 
+variable "prefix" {
+  description = "Please enter a unique three digit prefix number (between 000-999)"
+}
 
 #
-# Netw
+# Network
 #
 variable "vnet_name" {
   default = "vm-vnet-weu"
@@ -24,8 +24,6 @@ variable "vnet_name" {
 variable "snet_name" {
   default = "vm-snet-weu"
 }
-
-
 
 #
 # VM-config
