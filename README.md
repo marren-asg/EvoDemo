@@ -25,6 +25,7 @@ Instruktioner:
 6. Kolla igenom variables.tf, gissa vad den används till!? 
 7. Kör kommandot:
 	`$ Terraform init`
+7b. om ni vill slippa behöva skriva in samma värde flera gånger, gå till variables.tf och skriv in ett default-värde för variabeln prefix 	
 8. Kör kommandot:
 	`$ Terraform plan`
 9. Gå igenom outputen, vad är det som syns? Vad innebär det här?
