@@ -36,8 +36,11 @@ Instruktioner:
 ## Del 2 - Förändring
 Instruktioner:
 
-13. Kolla state-filen, vad ser du där?
-14. Prova ändra Region i terraform-koden (förslagsvis `north europe`)
+13. Kolla state-filen, vad ser du där? Det går att se state med kommandot
+	`$ Terraform show`
+	eller
+	`$ Terraform state list`
+14. Prova ändra vm-size i terraform-koden (till exempel `Standard_D3_v2`)
 15. Kör kommandot
 	`$ Terraform plan`
 16. Gå igenom outputen igen, vad är det som syns? Vad innebär det här?
@@ -48,9 +51,9 @@ Instruktioner:
 ## Del 3 – Självstudier & avslut
 Instruktioner:
 
-19. Testa att ändra VM:ens storlek! Ta bort den publika IP:n! Vart skulle dessa ändringar göras?
+19. Testa att göra godtyckliga ändringar! Till exempel ta bort den publika IP:n! Vart skulle dessa ändringar göras?
 20. Fundera på om någon av delarna går att modularisera? Vilka? Varför?
 21. Varför har Marcus & Anton strukturerat *.tf-filerna så som de gjort?
 22. När ni känner er klara är det bara att avsluta labben, kör kommandot
 	`$ Terraform Destroy`
-23. Dubbelkolla också att inga rester ligger kvar! :)
+23. Dubbelkolla också att inga rester ligger kvar i azure portalen! :)
