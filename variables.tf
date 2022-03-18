@@ -11,7 +11,7 @@ variable "location" {
 }
 
 variable "prefix" {
-  description = "Please enter a unique three digit prefix number (between 000-999)"
+  description = "Please enter a unique three digit prefix number (between 000-999)"  
 }
 
 #
@@ -29,7 +29,7 @@ variable "snet_name" {
 # VM-config
 #
 variable "vm_size" {
-  default = "Standard_DS2_v2" //exists
+  default = "Standard_DS2_v2" 
 }
 variable "vm_name" {
   default = "test-vm"
